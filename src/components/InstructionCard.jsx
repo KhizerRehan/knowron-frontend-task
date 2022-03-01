@@ -40,7 +40,10 @@ export function InstructionCard({ step, handlers }) {
           </div>
 
           <div className="col-1 d-flex align-items-center justify-content-center">
-            <span>delete</span>
+            <span className="cursor" onClick={(event)=>{
+              event.stopPropagation();
+              handlers.removeInstruction(step.stepId)
+            }}>delete</span>
           </div>
         </div>
       </Draggable>

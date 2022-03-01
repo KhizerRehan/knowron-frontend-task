@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { InstructionCard } from "./InstructionCard";
 // import { getInstructionsList } from "../utils";
-import './styles.css'
+import "./styles.css";
 
 export function Instructions(props) {
   const [steps, setSteps] = useState([
@@ -49,6 +49,17 @@ export function Instructions(props) {
   //       });
   //   }, []);
 
+  const removeInstruction = (stepId) => {
+    if (!stepId) {
+      return;
+    }
+
+    const filteredList = steps.filter((step) => {
+      return step.stepId !== stepId;
+    });
+    setSteps(filteredList);
+  };
+
   const handleStart = (event) => {
     console.log("handleStart => ", event);
   };
@@ -66,6 +77,7 @@ export function Instructions(props) {
       handleStart: handleStart,
       handleDrag: handleDrag,
       handleStop: handleStop,
+      removeInstruction: removeInstruction
     };
   };
 
