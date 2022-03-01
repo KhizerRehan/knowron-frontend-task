@@ -20,13 +20,10 @@ export function httpGet(endpoint, options) {
             }
         })
             .then(response => {
-                debugger;
                 if (response.status === 200) {
-                    resolve(response);
-
                     resolve({
                         statusCode: response.status,
-                        data: response
+                        data: response.data
                     });
                 }
                 else {
