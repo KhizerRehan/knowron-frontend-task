@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { InstructionCard } from "./InstructionCard";
-import { getInstructionsList } from "../utils";
+// import { getInstructionsList } from "../utils";
 
 export function Instructions(props) {
   const [steps, setSteps] = useState([
@@ -25,7 +25,7 @@ export function Instructions(props) {
       imagePath: "",
     },
     {
-      stepId: 4,
+      stepId: 5,
       description: "Instruction-5",
       imagePath: "",
     },
@@ -48,12 +48,48 @@ export function Instructions(props) {
   //       });
   //   }, []);
 
+  const handleStart = (event) => {
+    console.log("handleStart => ", event);
+  };
+
+  const handleDrag = (event) => {
+    console.log("handleDrag => ", event);
+  };
+
+  const handleStop = (event) => {
+    console.log("handleStop => ", event);
+  };
+
+  const dragAndDropHandlers = () => {
+    return {
+      handleStart: handleStart,
+      handleDrag: handleDrag,
+      handleStop: handleStop,
+    };
+  };
+
   if (steps.length === 0) {
     return <p>Oops! No Instructions found</p>;
   }
 
-  return steps.map((step, index) => {
-    return (
-        <InstructionCard key={index} step={step} />)
-  });
+  return (
+    <div className="row d-flex">
+      <div
+        className="col-6 p-5"
+        style={{
+          backgroundColor: "rgb(208 208 208 / 10%)",
+          borderRadius: "20",
+        }}>
+        {steps.map((step, index) => {
+          return (
+            <InstructionCard
+              key={index}
+              step={step}
+              handlers={dragAndDropHandlers()}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
 }
