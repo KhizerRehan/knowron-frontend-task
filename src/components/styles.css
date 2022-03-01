@@ -1,0 +1,17 @@
+
+.instructionImage {
+  width: 65%;
+  height: 150px;
+}
+
+.stepId {
+  color: #c2c2c2;
+  font-size: 60px;
+}
+
+/* Utils */
+
+.fontSize-12 {
+    font-size: 12px;
+  }
+  

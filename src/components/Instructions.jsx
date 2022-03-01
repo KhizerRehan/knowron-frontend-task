@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { InstructionCard } from "./InstructionCard";
 // import { getInstructionsList } from "../utils";
+import './styles.css'
 
 export function Instructions(props) {
   const [steps, setSteps] = useState([
@@ -75,7 +76,7 @@ export function Instructions(props) {
   return (
     <div className="row d-flex">
       <div
-        className="col-6 p-5"
+        className="col-6 m-4 p-4"
         style={{
           backgroundColor: "rgb(208 208 208 / 10%)",
           borderRadius: "20",

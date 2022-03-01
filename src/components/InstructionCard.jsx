@@ -18,12 +18,29 @@ export function InstructionCard({ step, handlers }) {
         onDrag={handlers.handleDrag}
         onStop={handlers.handleStop}>
         <div
-          className="card handle mt-2 mb-2"
-          style={{ backgroundColor: "whitesmoke", borderRadius: 10 }}>
-          <div className="card-body ">
-            <h5 className="card-title">{step.stepId}</h5>
-            <p className="card-text">{step.description}</p>
-            {/* <img src={step.imagePath} className="card-img-top" alt={step.description} /> */}
+          className="row mb-4 p-3 handle"
+          style={{ backgroundColor: "#f5f5f5", borderRadius: 10 }}>
+          <div className="col-1">
+            <h1 className="stepId">{step.stepId}</h1>
+          </div>
+
+          <div className="col-9">
+            <fieldset className="border p-4">
+              <legend className="w-auto fontSize-12">Step description</legend>
+              <p className="card-text">{step.description}</p>
+            </fieldset>
+
+            {step.imagePath && (
+              <img
+                src={step.imagePath}
+                className="instructionImage"
+                alt={step.description}
+              />
+            )}
+          </div>
+
+          <div className="col-1 d-flex align-items-center justify-content-center">
+            <span>delete</span>
           </div>
         </div>
       </Draggable>
