@@ -49,6 +49,18 @@ export function Instructions(props) {
   //       });
   //   }, []);
 
+  const addStep = () => {
+    const dummyPaylaod = {
+      stepId: steps.length + 1,
+      description: `Instruction-${steps.length + 1}`,
+      imagePath: "",
+    };
+
+    const newInstructionsList = steps.concat(dummyPaylaod);
+
+    setSteps(newInstructionsList);
+  };
+
   const removeInstruction = (stepId) => {
     if (!stepId) {
       return;
@@ -77,7 +89,7 @@ export function Instructions(props) {
       handleStart: handleStart,
       handleDrag: handleDrag,
       handleStop: handleStop,
-      removeInstruction: removeInstruction
+      removeInstruction: removeInstruction,
     };
   };
 
@@ -103,6 +115,16 @@ export function Instructions(props) {
           );
         })}
       </div>
+
+      <div className="col-5">{/* EMPTY SPACER */}</div>
+
+      <div className="col-2 ml-4">
+        <button type="button" class="btn btn-orange w-50" onClick={addStep}>
+          + Step
+        </button>
+      </div>
+      <br />
+      <br />
     </div>
   );
 }
