@@ -85,23 +85,23 @@ Ans: 8 hours splitted into 2 days (4 hrs/day)
 - What would you add to your solution if you had more time? If you didn't spend much time on the coding test then use this as an opportunity to explain what you would add.
 
  Ans: I think many things could be add:
-  - persisting steps in case new steps were added but user tries wanted to just keep editing 
-    for multiple times to make a final instruction:
+  - Persisting of steps in case new steps were added and user want keep editing 
+    for multiple times even after navigating/signing again to make a final instruction.
+
   - Product Image/Video carousel for each product besides each product manual instruction (To   make it more clear for user if they are not able get info properly from instruction)
+
   - OfCourse basic crud operations 
 
 Ans: 8 hours splitted into 2 days (4 hrs/day)
 
 - Which parts did you spend the most time with? What did you find most difficult?
 
-Ans: Drag and Drop it found few contraints and i did mostly R&D first to get some good package
-i knew that it was much easier to do with vanilla JS but it was more time consuming compare to
-Battle tested libs which were less error prone and more functionlity:
+Ans: Drag and Drop. I found few contraints to handle such part and that's why mostly R&D (~2-3 hrs with some trial and test) first to get some solid package to cover many things and provide options to customize thing. i knew that it was much easier to do with vanilla JS but it was more time consuming compare to battle tested libs which were less error prone and more functionlity along with large no of edge cases such as listed below:
 
- Many things were into consideration such as
  - Vertical Switching
- - When to knwo element/card has switch another card (trickest part)
- - Swapping of stepId values
+ - Know element/card has switch another card on drag(trickest part)
+ - Handle drag events
+ - Updating state on Drag end
 
 - How did you find the test overall? Did you have any issues or have difficulties completing it? If you have any suggestions on how we can improve the test, we'd love to hear them.
 
@@ -111,3 +111,14 @@ Ans: Found it a good challenge since many things were challenged here:
  - Resuablity interms of component
  - Async nature of react (tricky part i found while swapping local state and setting new values)
  - Dynamically switch things based on Tabs Selection.
+
+
+ #### Chances for Improvement
+ - In terms of challange i think it's good to test skills by putting him/her into challenge so i found good approach. +1
+ - Add more sort native css/js examples to test that whether user can even right vanilla CSS/JS without using a frameworks
+   which IMO, is important to understant basics of lanaguage when we are dealing in Frontend.
+ - Version control (Ask user to push/pull) from git repo inorder to test version controlling.    
+
+
+   Thanks
+
