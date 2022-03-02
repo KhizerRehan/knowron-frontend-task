@@ -1,63 +1,63 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { InstructionCard } from "./InstructionCard";
-
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-
 import { Card } from "./Card";
-// import { getInstructionsList } from "../utils";
+import { getInstructionsList } from "../utils";
 import "./styles.css";
 
+import mockData from "./mockData.json";
+
 export function Instructions(props) {
-  const [steps, setSteps] = useState([
-    {
-      stepId: 1,
-      description: "Instruction-1",
-      imagePath: "",
-    },
-    {
-      stepId: 2,
-      description: "Instruction-2",
-      imagePath: "",
-    },
-    {
-      stepId: 3,
-      description: "Instruction-3",
-      imagePath: "",
-    },
-    {
-      stepId: 4,
-      description: "Instruction-4",
-      imagePath: "",
-    },
-    {
-      stepId: 5,
-      description: "Instruction-5",
-      imagePath: "",
-    },
-  ]);
+  const [dragAndHoverIndexes, setDragAndHoverIndexes] = useState({
+    dragIndex: 0,
+    hoverIndex: 0,
+  });
+  const [steps, setSteps] = useState([]);
 
-  //   Todo: Enable when API seems to work:
-  //   useEffect(() => {
-  //     getInstructionsList({
-  //       endpoint: "",
-  //       options: {},
-  //     })
-  //       .then((response) => {
-  //         if (response.statusCode === 200) {
-  //           const { tutorial } = response.data;
-  //           setSteps(tutorial.steps);
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }, []);
+  useEffect(() => {
+    const currentStepsState = JSON.parse(JSON.stringify(steps));
+    const { dragIndex, hoverIndex } = dragAndHoverIndexes;
+    updatePostion(currentStepsState, dragIndex, hoverIndex);
 
-  const moveCard = useCallback((dragIndex, hoverIndex) => {
-    console.log("dragIndex", dragIndex);
-    console.log("hoverIndex", hoverIndex);
+    for (let i = 0; i < currentStepsState.length; i++) {
+      currentStepsState[i].stepId = i + 1; // update stepId no
+    }
+    setSteps(currentStepsState);
+  }, [dragAndHoverIndexes]);
+
+  const updatePostion = (arr, fromIndex, toIndex) => {
+    if (!(Array.isArray(arr) && arr.length > 0)) {
+      return;
+    }
+    var element = arr[fromIndex];
+    arr.splice(fromIndex, 1);
+    console.log("Before=>", arr);
+    arr.splice(toIndex, 0, element);
+    console.log("After=>", arr);
+  };
+
+  // Todo: Enable when API seems to work:
+  useEffect(() => {
+    setSteps(mockData.tutorial.steps);
   }, []);
+
+  // Todo: Enable when API seems to work:
+  // useEffect(() => {
+  //   getInstructionsList({
+  //     endpoint: "",
+  //     options: {},
+  //   })
+  //     .then((response) => {
+  //       if (response.statusCode === 200) {
+  //         debugger;
+  //         const { tutorial } = response.data;
+  //         setSteps(tutorial.steps);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
 
   const addStep = () => {
     const dummyPaylaod = {
@@ -65,9 +65,7 @@ export function Instructions(props) {
       description: `Instruction-${steps.length + 1}`,
       imagePath: "",
     };
-
     const newInstructionsList = steps.concat(dummyPaylaod);
-
     setSteps(newInstructionsList);
   };
 
@@ -75,35 +73,23 @@ export function Instructions(props) {
     if (!stepId) {
       return;
     }
-
     const filteredList = steps.filter((step) => {
       return step.stepId !== stepId;
     });
     setSteps(filteredList);
   };
 
-  const handleStart = (event) => {
-    console.log("handleStart => ", event);
-  };
+  const moveCard = useCallback((dragIndex, hoverIndex) => {
+    console.log("dragIndex", dragIndex);
+    console.log("hoverIndex", hoverIndex);
 
-  const handleDrag = (event) => {
-    console.log("handleDrag => ", event);
-  };
+    setDragAndHoverIndexes({
+      dragIndex,
+      hoverIndex,
+    });
+  }, []);
 
-  const handleStop = (event) => {
-    console.log("handleStop => ", event);
-  };
-
-  const dragAndDropHandlers = () => {
-    return {
-      handleStart: handleStart,
-      handleDrag: handleDrag,
-      handleStop: handleStop,
-      removeInstruction: removeInstruction,
-    };
-  };
-
-  if (steps.length === 0) {
+  if (steps && steps.length === 0) {
     return <p>Oops! No Instructions found</p>;
   }
 
@@ -116,20 +102,20 @@ export function Instructions(props) {
           borderRadius: "20",
         }}>
         <DndProvider backend={HTML5Backend}>
-          {steps.map((step, index) => {
-            debugger;
-            return (
-              <Card
-                key={step.stepId}
-                id={step.stepId}
-                text={step.description}
-                index={index}
-                step={step}
-                moveCard={moveCard}
-                handlers={dragAndDropHandlers()}
-              />
-            );
-          })}
+          {steps.length > 0 &&
+            steps.map((step, index) => {
+              return (
+                <Card
+                  key={step.stepId}
+                  id={step?.stepId}
+                  text={step?.description}
+                  index={index}
+                  step={step}
+                  moveCard={moveCard}
+                  removeInstruction={removeInstruction}
+                />
+              );
+            })}
         </DndProvider>
       </div>
 

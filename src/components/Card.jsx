@@ -8,7 +8,7 @@ const style = {
   backgroundColor: "white",
   cursor: "move",
 };
-export const Card = ({ id, text, index, moveCard }) => {
+export const Card = ({ id, index, moveCard, step, removeInstruction }) => {
   const ref = useRef(null);
   const [{ handlerId }, drop] = useDrop({
     accept: "card",
@@ -68,8 +68,40 @@ export const Card = ({ id, text, index, moveCard }) => {
   const opacity = isDragging ? 0 : 1;
   drag(drop(ref));
   return (
-    <div ref={ref} style={{ ...style, opacity }} data-handler-id={handlerId}>
-      {text}
+    <div
+      ref={ref}
+      data-handler-id={handlerId}
+      className="row mb-4 p-3"
+      style={{ backgroundColor: "#f5f5f5", borderRadius: 10, ...style }}>
+      <div className="col-1">
+        <h1 className="stepId">{step.stepId}</h1>
+      </div>
+
+      <div className="col-9">
+        <fieldset className="border p-4">
+          <legend className="w-auto fontSize-12">Step description</legend>
+          <p className="card-text">{step.description}</p>
+        </fieldset>
+
+        {step.imagePath && (
+          <img
+            src={step.imagePath}
+            className="instructionImage"
+            alt={step.description}
+          />
+        )}
+      </div>
+
+      <div className="col-1 d-flex align-items-center justify-content-center">
+        <span
+          className="cursor"
+          onClick={(event) => {
+            event.stopPropagation();
+            removeInstruction(step.stepId);
+          }}>
+          delete
+        </span>
+      </div>
     </div>
   );
 };
