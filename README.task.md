@@ -80,8 +80,34 @@ Use the provided GET path to access the work instructions. You can query them us
 
 - How long did you spend on the coding test? 
 
+Ans: 8 hours splitted into 2 days (4 hrs/day)
+
 - What would you add to your solution if you had more time? If you didn't spend much time on the coding test then use this as an opportunity to explain what you would add.
+
+ Ans: I think many things could be add:
+  - persisting steps in case new steps were added but user tries wanted to just keep editing 
+    for multiple times to make a final instruction:
+  - Product Image/Video carousel for each product besides each product manual instruction (To   make it more clear for user if they are not able get info properly from instruction)
+  - OfCourse basic crud operations 
+
+Ans: 8 hours splitted into 2 days (4 hrs/day)
 
 - Which parts did you spend the most time with? What did you find most difficult?
 
+Ans: Drag and Drop it found few contraints and i did mostly R&D first to get some good package
+i knew that it was much easier to do with vanilla JS but it was more time consuming compare to
+Battle tested libs which were less error prone and more functionlity:
+
+ Many things were into consideration such as
+ - Vertical Switching
+ - When to knwo element/card has switch another card (trickest part)
+ - Swapping of stepId values
+
 - How did you find the test overall? Did you have any issues or have difficulties completing it? If you have any suggestions on how we can improve the test, we'd love to hear them.
+
+Ans: Found it a good challenge since many things were challenged here:
+ - App struture
+ - Parent child communication
+ - Resuablity interms of component
+ - Async nature of react (tricky part i found while swapping local state and setting new values)
+ - Dynamically switch things based on Tabs Selection.
