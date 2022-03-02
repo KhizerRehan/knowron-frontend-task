@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { Card } from "./Card";
+import { InstructionCard } from "./InstructionCard";
 import { getInstructionsList } from "../utils";
 import "./styles.css";
 
@@ -105,7 +105,7 @@ export function Instructions(props) {
           {steps.length > 0 &&
             steps.map((step, index) => {
               return (
-                <Card
+                <InstructionCard
                   key={step.stepId}
                   id={step?.stepId}
                   text={step?.description}
