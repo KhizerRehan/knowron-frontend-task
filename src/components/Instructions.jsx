@@ -125,6 +125,7 @@ export function Instructions(props) {
           <div className="row">
             <div className="col-9">
               <LanguagePills
+               lang={language}
                 displaytextLangs={displaytextLangs}
                 onLanguageSelect={onLanguageSelect}
               />

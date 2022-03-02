@@ -1,6 +1,6 @@
 import React from "react";
 
-export function LanguagePills({ displaytextLangs, onLanguageSelect }) {
+export function LanguagePills({ displaytextLangs, onLanguageSelect, lang }) {
   const onTabSelected = (e) => {
     e.stopPropagation();
     const languageSelected = e.currentTarget.attributes.getNamedItem("data-lang").value;
@@ -11,14 +11,15 @@ export function LanguagePills({ displaytextLangs, onLanguageSelect }) {
     <nav>
       <div className="nav nav-tabs" id="nav-tab" role="tablist">
         {displaytextLangs &&
-        displaytextLangs.map(({ language, text }) => {
+        displaytextLangs.map(({ language, text }, index) => {
           return (
-            <button className="nav-link active" id={`nav-${language}-tab`}
+            <a key={index} href={`#tab-${language}`} 
+            className={`cursor nav-link ${language === lang  ? "active" : null}`}
+            id={`nav-${language}-tab`}
                     data-lang={`${language}`}
-                    data-toggle="tab" href="#nav-home" role="tab"
-                    onClick={onTabSelected}>
+                    data-toggle="tab" role="tab" onClick={onTabSelected}>
               {text}
-            </button>
+            </a>
           );
         })}
       </div>

@@ -34,7 +34,9 @@
   font-weight: bold;
 }
 
-#nav-tab .nav-link:focus {
+
+#nav-tab .nav-link:focus,
+#nav-tab .nav-link.active {
   color: var(--orange);
 }
 
