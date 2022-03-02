@@ -8,7 +8,7 @@ const style = {
   marginBottom: ".5rem",
   cursor: "move",
 };
-export function InstructionCard({ id, index, moveCard, step, removeInstruction }) {
+export function InstructionCard({ id, index, moveCard, step, removeInstruction, text }) {
   const ref = useRef(null);
   const [{ handlerId }, drop] = useDrop({
     accept: "card",
@@ -79,14 +79,14 @@ export function InstructionCard({ id, index, moveCard, step, removeInstruction }
       <div className="col-9">
         <fieldset className="p-4">
           <legend className="w-auto fontSize-12">Step description</legend>
-          <p className="card-text">{step.description}</p>
+          <p className="card-text">{text}</p>
         </fieldset>
 
         {step.imagePath && (
           <img
             src={step.imagePath}
             className="instructionImage"
-            alt={step.description} />
+            alt={text} />
         )}
       </div>
 
@@ -95,7 +95,7 @@ export function InstructionCard({ id, index, moveCard, step, removeInstruction }
           className="cursor"
           onClick={(event) => {
             event.stopPropagation();
-            removeInstruction(step.stepId);
+            removeInstruction(id);
           } }>
           delete
         </span>
