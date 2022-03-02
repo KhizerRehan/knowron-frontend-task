@@ -1,24 +1,28 @@
 .instructionImage {
-    width: 65%;
-    height: 150px;
-  }
-  
-  .stepId {
-    color: #c2c2c2;
-    font-size: 60px;
-  }
-  
-  .btn-orange {
-    background-color: #f0693d;
-    font-weight: bold;
-    color: white;
-  }
-  /* Utils */
-  
-  .fontSize-12 {
-    font-size: 12px;
-  }
-  
-  .cursor {
-    cursor: pointer;
-  }
+  width: 65%;
+  height: 150px;
+}
+
+.stepId {
+  color: #c2c2c2;
+  font-size: 60px;
+}
+
+.btn-orange {
+  background-color: #f0693d;
+  font-weight: bold;
+  color: fff;
+}
+
+.btn-orange:hover {
+  color: #fff;
+}
+/* Utils */
+
+.fontSize-12 {
+  font-size: 12px;
+}
+
+.cursor {
+  cursor: pointer;
+}
