@@ -2,8 +2,6 @@ import React from "react";
 import Draggable from "react-draggable"; // The default
 
 export function InstructionCard({ step, handlers }) {
-  console.log(step, handlers);
-  debugger;
 
   return (
     <React.Fragment>
