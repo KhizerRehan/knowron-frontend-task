@@ -52,6 +52,12 @@ legend {
   color: var(--orange);
 }
 
+.stepBtn {
+  position: relative;
+	top: -40px;
+	left: 18px;
+}
+
 /* Utils */
 .fontSize-12 {
   font-size: 12px;

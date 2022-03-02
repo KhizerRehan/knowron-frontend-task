@@ -128,7 +128,7 @@ export function Instructions(props) {
           </DndProvider>
         </div>
 
-        <div className="col-4 p-4">
+        <div className="col-4 p-4 stepBtn">
           <button type="button" className="btn btn-orange w-50" onClick={addStep}>
             + Step
           </button>
