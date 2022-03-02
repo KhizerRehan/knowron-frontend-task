@@ -1,17 +1,16 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { InstructionCard } from "./InstructionCard";
-import { getInstructionsList } from "../utils";
-import "./styles.css";
+import { LanguagePills } from "./LanguagePills";
 
 import mockData from "./mockData.json";
 
 export function Instructions(props) {
   const [dragAndHoverIndexes, setDragAndHoverIndexes] = useState({
-    dragIndex: 0,
-    hoverIndex: 0,
-  });
+                                                                   dragIndex: 0,
+                                                                   hoverIndex: 0
+                                                                 });
   const [steps, setSteps] = useState([]);
 
   useEffect(() => {
@@ -63,7 +62,7 @@ export function Instructions(props) {
     const dummyPaylaod = {
       stepId: steps.length + 1,
       description: `Instruction-${steps.length + 1}`,
-      imagePath: "",
+      imagePath: ""
     };
     const newInstructionsList = steps.concat(dummyPaylaod);
     setSteps(newInstructionsList);
@@ -84,9 +83,9 @@ export function Instructions(props) {
     console.log("hoverIndex", hoverIndex);
 
     setDragAndHoverIndexes({
-      dragIndex,
-      hoverIndex,
-    });
+                             dragIndex,
+                             hoverIndex
+                           });
   }, []);
 
   if (steps && steps.length === 0) {
@@ -95,14 +94,24 @@ export function Instructions(props) {
 
   return (
     <div className="row d-flex">
-      <div
-        className="col-6 m-4 p-4"
-        style={{
-          backgroundColor: "rgb(208 208 208 / 10%)",
-          borderRadius: "20",
-        }}>
-        <DndProvider backend={HTML5Backend}>
-          {steps.length > 0 &&
+      <div className={"col-12 col-lg-6"}>
+        <div className="m-4 p-4 tabs-position">
+          <div className="row">
+            <div className="col-9">
+              <LanguagePills />
+            </div>
+            <div className="col-3">
+              <button type="button" className="btn btn-orange fontSize-13" onClick={addStep}>
+                Publish tutorial
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          className="m-4 p-4"
+          style={{borderRadius: "20"}}>
+          <DndProvider backend={HTML5Backend}>
+            {steps.length > 0 &&
             steps.map((step, index) => {
               return (
                 <InstructionCard
@@ -116,18 +125,18 @@ export function Instructions(props) {
                 />
               );
             })}
-        </DndProvider>
+          </DndProvider>
+        </div>
+
+        <div className="col-4 p-4">
+          <button type="button" className="btn btn-orange w-50" onClick={addStep}>
+            + Step
+          </button>
+        </div>
+        <br />
+        <br />
       </div>
 
-      <div className="col-5">{/* EMPTY SPACER */}</div>
-
-      <div className="col-2 ml-4">
-        <button type="button" class="btn btn-orange w-50" onClick={addStep}>
-          + Step
-        </button>
-      </div>
-      <br />
-      <br />
     </div>
   );
 }

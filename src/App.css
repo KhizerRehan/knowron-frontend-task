@@ -1,26 +1,56 @@
+:root {
+  --white: #ffffff;
+  --orange: #f0693d;
+  --light-grey: #c2c2c2;
+}
+
 .instructionImage {
   width: 65%;
   height: 150px;
 }
 
 .stepId {
-  color: #c2c2c2;
+  color: var(--light-grey);
   font-size: 60px;
 }
 
 .btn-orange {
   background-color: #f0693d;
   font-weight: bold;
-  color: fff;
+  color: var(--white);
+}
+
+.nav-tabs {
+  border-bottom: none;
 }
 
 .btn-orange:hover {
-  color: #fff;
+  color: var(--white);
+  text-decoration: none;
 }
-/* Utils */
 
+#nav-tab .nav-link {
+  color: var(--light-grey);
+  font-weight: bold;
+}
+
+#nav-tab .nav-link:focus {
+  color: var(--orange);
+}
+
+.tabs-position {
+  position: relative;
+  top: 56px;
+	left: -15px;
+}
+
+/* Utils */
 .fontSize-12 {
   font-size: 12px;
+}
+
+.fontSize-13 {
+  font-size: 13px;
 }
 
 .cursor {
