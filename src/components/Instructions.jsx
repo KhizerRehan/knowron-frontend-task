@@ -1,5 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { InstructionCard } from "./InstructionCard";
+
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+
+import { Card } from "./Card";
 // import { getInstructionsList } from "../utils";
 import "./styles.css";
 
@@ -48,6 +53,11 @@ export function Instructions(props) {
   //         console.log(err);
   //       });
   //   }, []);
+
+  const moveCard = useCallback((dragIndex, hoverIndex) => {
+    console.log("dragIndex", dragIndex);
+    console.log("hoverIndex", hoverIndex);
+  }, []);
 
   const addStep = () => {
     const dummyPaylaod = {
@@ -105,15 +115,22 @@ export function Instructions(props) {
           backgroundColor: "rgb(208 208 208 / 10%)",
           borderRadius: "20",
         }}>
-        {steps.map((step, index) => {
-          return (
-            <InstructionCard
-              key={index}
-              step={step}
-              handlers={dragAndDropHandlers()}
-            />
-          );
-        })}
+        <DndProvider backend={HTML5Backend}>
+          {steps.map((step, index) => {
+            debugger;
+            return (
+              <Card
+                key={step.stepId}
+                id={step.stepId}
+                text={step.description}
+                index={index}
+                step={step}
+                moveCard={moveCard}
+                handlers={dragAndDropHandlers()}
+              />
+            );
+          })}
+        </DndProvider>
       </div>
 
       <div className="col-5">{/* EMPTY SPACER */}</div>

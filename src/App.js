@@ -1,5 +1,5 @@
 import React from "react";
-import { Instructions, LanguagePills } from "./components";
+import { Instructions, LanguagePills, DragAndDropContainer } from "./components";
 
 import './App.css'
 
@@ -9,6 +9,8 @@ function App() {
     <React.Fragment>
       <LanguagePills />
       <Instructions />
+
+      {/* <DragAndDropContainer /> */}
     </React.Fragment>
   );
 }
