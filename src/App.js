@@ -7,7 +7,6 @@ function App() {
 
   return (
     <React.Fragment>
-      <LanguagePills />
       <Instructions />
     </React.Fragment>
   );
