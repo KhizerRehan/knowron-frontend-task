@@ -44,6 +44,14 @@
 	left: -15px;
 }
 
+fieldset {
+  border: 1px solid var(--orange);
+}
+
+legend {
+  color: var(--orange);
+}
+
 /* Utils */
 .fontSize-12 {
   font-size: 12px;

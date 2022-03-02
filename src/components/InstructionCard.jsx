@@ -3,9 +3,9 @@ import { useDrag, useDrop } from "react-dnd";
 
 const style = {
   border: "1px dashed gray",
+  backgroundColor: '#ececec',
   padding: "0.5rem 1rem",
   marginBottom: ".5rem",
-  backgroundColor: "white",
   cursor: "move",
 };
 export function InstructionCard({ id, index, moveCard, step, removeInstruction }) {
@@ -77,7 +77,7 @@ export function InstructionCard({ id, index, moveCard, step, removeInstruction }
       </div>
 
       <div className="col-9">
-        <fieldset className="border p-4">
+        <fieldset className="p-4">
           <legend className="w-auto fontSize-12">Step description</legend>
           <p className="card-text">{step.description}</p>
         </fieldset>
