@@ -29,7 +29,6 @@
                    "text":"Anleitungen sind eine gute MÃ¶glichkeit, komplexe Aufgaben oder Prozesse zu vermitteln, indem sie in leicht nachvollziehbare Schritte unterteilt werden."
                 }
              ],
-             "description": "Description-1",
              "documentReference":""
           },
           {
@@ -45,7 +44,6 @@
                    "text":"Geben Sie die Instruktionen einfach in die Textfelder ein. Sie kÃ¶nnen die Schritte einfach per Drag & Drop neu anordnen oder mit der unteren SchaltflÃ¤che neue Schritte hinzufÃ¼gen."
                 }
              ],
-             "description": "Description-2",
              "documentReference":""
           },
           {
@@ -61,7 +59,6 @@
                    "text":"Sie kÃ¶nnen Bilder, GIFs oder Videos zur Veranschaulichung der einzelnen Schritte hinzufÃ¼gen. Denken Sie daran: Ein Bild sagt mehr als tausend Worte!"
                 }
              ],
-             "description": "Description-3",
              "documentReference":""
           },
           {
@@ -77,7 +74,6 @@
                    "text":"Sobald Sie Ihre Ã„nderungen speichern, steht die neue Version den Mitarbeitern  weltweit sofort zur VerfÃ¼gung."
                 }
              ],
-             "description": "Description-4",
              "documentReference":""
           }
        ],
